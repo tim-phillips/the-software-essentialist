@@ -43,4 +43,12 @@ describe("FizzBuzz", () => {
     expect(fizzbuzz(70)).toBe("Buzz");
     expect(fizzbuzz(100)).toBe("Buzz");
   });
+
+  test("outputs 'FizzBuzz' for multiples of both three and five", () => {
+    expect(fizzbuzz(15)).toBe("FizzBuzz");
+    expect(fizzbuzz(30)).toBe("FizzBuzz");
+    expect(fizzbuzz(45)).toBe("FizzBuzz");
+    expect(fizzbuzz(75)).toBe("FizzBuzz");
+    expect(fizzbuzz(90)).toBe("FizzBuzz");
+  });
 });
