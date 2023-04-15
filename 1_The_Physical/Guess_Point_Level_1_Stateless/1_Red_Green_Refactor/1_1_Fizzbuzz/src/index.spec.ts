@@ -23,9 +23,9 @@ describe("FizzBuzz", () => {
   test("outputs numbers as a string", () => {
     expect(fizzbuzz(1)).toBe("1");
     expect(fizzbuzz(11)).toBe("11");
-    expect(fizzbuzz(55)).toBe("55");
+    expect(fizzbuzz(56)).toBe("56");
     expect(fizzbuzz(83)).toBe("83");
-    expect(fizzbuzz(100)).toBe("100");
+    expect(fizzbuzz(98)).toBe("98");
   });
 
   test("outputs 'Fizz' for multiples of three", () => {
@@ -34,5 +34,13 @@ describe("FizzBuzz", () => {
     expect(fizzbuzz(12)).toBe("Fizz");
     expect(fizzbuzz(33)).toBe("Fizz");
     expect(fizzbuzz(99)).toBe("Fizz");
+  });
+
+  test("outputs 'Buzz' for multiples of five", () => {
+    expect(fizzbuzz(5)).toBe("Buzz");
+    expect(fizzbuzz(10)).toBe("Buzz");
+    expect(fizzbuzz(35)).toBe("Buzz");
+    expect(fizzbuzz(70)).toBe("Buzz");
+    expect(fizzbuzz(100)).toBe("Buzz");
   });
 });
