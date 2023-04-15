@@ -19,4 +19,12 @@ describe("FizzBuzz", () => {
     expect(() => fizzbuzz(101)).toThrow();
     expect(() => fizzbuzz(131)).toThrow();
   });
+
+  test("outputs numbers as a string", () => {
+    expect(fizzbuzz(1)).toBe("1");
+    expect(fizzbuzz(11)).toBe("11");
+    expect(fizzbuzz(54)).toBe("54");
+    expect(fizzbuzz(87)).toBe("87");
+    expect(fizzbuzz(100)).toBe("100");
+  });
 });
