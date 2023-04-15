@@ -23,8 +23,16 @@ describe("FizzBuzz", () => {
   test("outputs numbers as a string", () => {
     expect(fizzbuzz(1)).toBe("1");
     expect(fizzbuzz(11)).toBe("11");
-    expect(fizzbuzz(54)).toBe("54");
-    expect(fizzbuzz(87)).toBe("87");
+    expect(fizzbuzz(55)).toBe("55");
+    expect(fizzbuzz(83)).toBe("83");
     expect(fizzbuzz(100)).toBe("100");
+  });
+
+  test("outputs 'Fizz' for multiples of three", () => {
+    expect(fizzbuzz(3)).toBe("Fizz");
+    expect(fizzbuzz(6)).toBe("Fizz");
+    expect(fizzbuzz(12)).toBe("Fizz");
+    expect(fizzbuzz(33)).toBe("Fizz");
+    expect(fizzbuzz(99)).toBe("Fizz");
   });
 });
