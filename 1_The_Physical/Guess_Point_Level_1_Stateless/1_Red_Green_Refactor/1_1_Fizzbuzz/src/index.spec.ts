@@ -1,11 +1,5 @@
 import { fizzbuzz } from "./fizzbuzz";
 
-// Write a function that takes numbers from 1 to 100
-// and outputs them as a string,
-// but for multiples of three it returns “Fizz”
-// and for multiples of five it returns “Buzz”
-// For multiples of both three and five, it returns “FizzBuzz”
-
 describe("FizzBuzz", () => {
   test("takes numbers from 1 to 100", () => {
     expect(() => fizzbuzz(-23)).toThrow();
