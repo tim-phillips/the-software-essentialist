@@ -8,7 +8,7 @@ describe(isPalindrome.name, () => {
     }
   );
 
-  it("knows that 'bill' is not a palindrome", () => {
-    expect(isPalindrome("bill")).toBeFalsy();
+  it.each(["bill", "tomato"])("knows that '%s' is not a palindrome", (word) => {
+    expect(isPalindrome(word)).toBeFalsy();
   });
 });
