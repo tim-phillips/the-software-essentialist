@@ -1,8 +1,8 @@
 import { isPalindrome } from "./isPalindrome";
 
 describe(isPalindrome.name, () => {
-  it("knows that 'mom' is a palindrome", () => {
-    expect(isPalindrome("mom")).toBeTruthy();
+  it.each(["mom", "wow"])("knows that '%s' is a palindrome", (word) => {
+    expect(isPalindrome(word)).toBeTruthy();
   });
 
   it("knows that 'bill' is not a palindrome", () => {
