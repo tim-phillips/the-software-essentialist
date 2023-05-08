@@ -1,5 +1,8 @@
 export function isPalindrome(word: string): boolean {
-  return reverseWord(word).toLowerCase() === word.toLowerCase();
+  return (
+    reverseWord(word.replace(/ /g, "")).toLowerCase() ===
+    word.replace(/ /g, "").toLowerCase()
+  );
 }
 
 function reverseWord(word: string): string {
