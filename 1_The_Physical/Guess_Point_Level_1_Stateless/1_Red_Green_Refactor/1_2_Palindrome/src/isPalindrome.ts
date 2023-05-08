@@ -1,7 +1,6 @@
 export function isPalindrome(word: string): boolean {
   return (
-    reverse(removeSpaces(word)).toLowerCase() ===
-    removeSpaces(word).toLowerCase()
+    reverse(lowerCase(removeSpaces(word))) === lowerCase(removeSpaces(word))
   );
 }
 
@@ -11,4 +10,8 @@ function reverse(str: string): string {
 
 function removeSpaces(str: string): string {
   return str.replace(/ /g, "");
+}
+
+function lowerCase(str: string): string {
+  return str.toLowerCase();
 }
