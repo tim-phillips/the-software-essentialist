@@ -13,7 +13,7 @@ describe(validatePassword.name, () => {
 
     expect(response.result).toEqual(false);
     expect(response.errors.length).toEqual(1);
-    expect(response.errors[0]).toEqual("InvalidLength");
+    expect(response.errors).toContain("InvalidLength");
   });
 
   it("returns error for long password containing a digit and an upper case letter", () => {
@@ -21,7 +21,7 @@ describe(validatePassword.name, () => {
 
     expect(response.result).toEqual(false);
     expect(response.errors.length).toEqual(1);
-    expect(response.errors[0]).toEqual("InvalidLength");
+    expect(response.errors).toContain("InvalidLength");
   });
 
   it("returns error for password between 5 and 15 characters with an upper case letter without a digit", () => {
@@ -29,7 +29,7 @@ describe(validatePassword.name, () => {
 
     expect(response.result).toEqual(false);
     expect(response.errors.length).toEqual(1);
-    expect(response.errors[0]).toEqual("MissingDigit");
+    expect(response.errors).toContain("MissingDigit");
   });
 
   it("returns error for password between 5 and 15 characters with a digit without an upper case letter", () => {
@@ -37,7 +37,7 @@ describe(validatePassword.name, () => {
 
     expect(response.result).toEqual(false);
     expect(response.errors.length).toEqual(1);
-    expect(response.errors[0]).toEqual("MissingUppercase");
+    expect(response.errors).toContain("MissingUppercase");
   });
 
   it("returns errors for password between 5 and 15 characters without a digit or an upper case letter", () => {
