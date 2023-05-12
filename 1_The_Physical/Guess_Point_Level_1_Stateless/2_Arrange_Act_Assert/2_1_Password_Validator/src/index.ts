@@ -1,6 +1,13 @@
-export function validatePassword(password: string) {
+type Errors = "InvalidLength" | "MissingDigit";
+
+interface ValidatePasswordResponse {
+  result: boolean;
+  errors: Errors[];
+}
+
+export function validatePassword(password: string): ValidatePasswordResponse {
   let result = true;
-  let errors: string[] = [];
+  let errors: Errors[] = [];
 
   if (password.length < 5 || password.length > 15) {
     result = false;
