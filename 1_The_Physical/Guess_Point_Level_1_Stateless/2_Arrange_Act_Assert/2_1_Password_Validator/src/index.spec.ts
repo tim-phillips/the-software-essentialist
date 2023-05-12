@@ -66,4 +66,14 @@ describe(validatePassword.name, () => {
     expect(response.errors).toContain("InvalidLength");
     expect(response.errors).toContain("MissingUppercase");
   });
+
+  it("returns errors for long password without a digit or an upper case letter", () => {
+    const response = validatePassword("suchlengthsuchwow");
+
+    expect(response.result).toEqual(false);
+    expect(response.errors.length).toEqual(3);
+    expect(response.errors).toContain("InvalidLength");
+    expect(response.errors).toContain("MissingUppercase");
+    expect(response.errors).toContain("MissingDigit");
+  });
 });
