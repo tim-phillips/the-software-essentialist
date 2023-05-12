@@ -1,6 +1,13 @@
 import { validatePassword } from "./";
 
 describe(validatePassword.name, () => {
+  it("returns true for password between 5 and 15 characters", () => {
+    const response = validatePassword("agoodpassword");
+
+    expect(response.result).toEqual(true);
+    expect(response.errors.length).toEqual(0);
+  });
+
   it("returns error for short password", () => {
     const response = validatePassword("tiny");
 
