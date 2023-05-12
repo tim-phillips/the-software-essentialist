@@ -48,4 +48,13 @@ describe(validatePassword.name, () => {
     expect(response.errors).toContain("MissingDigit");
     expect(response.errors).toContain("MissingUppercase");
   });
+
+  it("returns errors for short password with a digit without an upper case letter", () => {
+    const response = validatePassword("t1ny");
+
+    expect(response.result).toEqual(false);
+    expect(response.errors.length).toEqual(2);
+    expect(response.errors).toContain("InvalidLength");
+    expect(response.errors).toContain("MissingUppercase");
+  });
 });
