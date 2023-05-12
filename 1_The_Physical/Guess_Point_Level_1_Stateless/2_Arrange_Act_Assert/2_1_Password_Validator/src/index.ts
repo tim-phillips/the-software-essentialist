@@ -1,4 +1,4 @@
-type Errors = "InvalidLength" | "MissingDigit";
+type Errors = "InvalidLength" | "MissingDigit" | "MissingUppercase";
 
 interface ValidatePasswordResponse {
   result: boolean;
@@ -17,6 +17,11 @@ export function validatePassword(password: string): ValidatePasswordResponse {
   if (!/[0-9]/.test(password)) {
     result = false;
     errors.push("MissingDigit");
+  }
+
+  if (!/[A-Z]/.test(password)) {
+    result = false;
+    errors.push("MissingUppercase");
   }
 
   return {
