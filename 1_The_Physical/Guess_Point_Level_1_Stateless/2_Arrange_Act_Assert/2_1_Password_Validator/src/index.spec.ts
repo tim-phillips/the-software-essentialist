@@ -39,4 +39,13 @@ describe(validatePassword.name, () => {
     expect(response.errors.length).toEqual(1);
     expect(response.errors[0]).toEqual("MissingUppercase");
   });
+
+  it("returns errors for password between 5 and 15 characters without a digit or an upper case letter", () => {
+    const response = validatePassword("apass");
+
+    expect(response.result).toEqual(false);
+    expect(response.errors.length).toEqual(2);
+    expect(response.errors).toContain("MissingDigit");
+    expect(response.errors).toContain("MissingUppercase");
+  });
 });
