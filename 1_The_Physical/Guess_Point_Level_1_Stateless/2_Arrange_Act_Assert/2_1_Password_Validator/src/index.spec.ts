@@ -24,6 +24,9 @@ describe(validatePassword.name, () => {
       "suchlengthsuchwow",
       ["InvalidLength", "MissingUppercase", "MissingDigit"],
     ],
+    ["maxwell1_c", ["MissingUppercase"]],
+    ["maxwellTheBe", ["MissingDigit"]],
+    ["thePhysical1234567", ["InvalidLength"]],
   ])("returns error for '%s'", (password, errors) => {
     const response = validatePassword(password);
     expect(response.result).toEqual(false);
