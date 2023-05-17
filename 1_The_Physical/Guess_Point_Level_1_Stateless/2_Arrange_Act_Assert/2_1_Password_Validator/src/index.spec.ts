@@ -1,12 +1,15 @@
 import { validatePassword } from "./";
 
 describe(validatePassword.name, () => {
-  it.each(["agoodPassw0rd"])("returns true for %s", (password) => {
-    const response = validatePassword(password);
+  it.each(["agoodPassw0rd", "aPasswiThD1g1t", "secR3t"])(
+    "validates '%s' is a valid password",
+    (password) => {
+      const response = validatePassword(password);
 
-    expect(response.result).toEqual(true);
-    expect(response.errors.length).toEqual(0);
-  });
+      expect(response.result).toEqual(true);
+      expect(response.errors.length).toEqual(0);
+    }
+  );
 
   it("returns error for short password containing a digit and an upper case letter", () => {
     const response = validatePassword("t1Ny");
