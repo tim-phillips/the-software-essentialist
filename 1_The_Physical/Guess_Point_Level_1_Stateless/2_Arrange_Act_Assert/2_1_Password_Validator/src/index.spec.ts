@@ -1,8 +1,8 @@
 import { validatePassword } from "./";
 
 describe(validatePassword.name, () => {
-  it("returns true for password between 5 and 15 characters, containing a digit and an upper case letter", () => {
-    const response = validatePassword("agoodPassw0rd");
+  it.each(["agoodPassw0rd"])("returns true for %s", (password) => {
+    const response = validatePassword(password);
 
     expect(response.result).toEqual(true);
     expect(response.errors.length).toEqual(0);
