@@ -18,4 +18,10 @@ describe(statsCalculator.name, () => {
     const response = statsCalculator(seq);
     expect(response.max).toBe(53);
   });
+
+  it("knows that 184 is the maximum value", () => {
+    const seq = [29, 184, 21, 16, 53, 40];
+    const response = statsCalculator(seq);
+    expect(response.max).toBe(184);
+  });
 });

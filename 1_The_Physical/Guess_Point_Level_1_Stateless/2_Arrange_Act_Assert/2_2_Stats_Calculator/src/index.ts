@@ -1,10 +1,10 @@
 export function statsCalculator(seq: number[]) {
   const seqCopy = [...seq];
 
-  seqCopy.sort();
+  seqCopy.sort((a, b) => a - b);
 
   return {
     min: seqCopy[0],
-    max: 53,
+    max: seqCopy[seqCopy.length - 1],
   };
 }
