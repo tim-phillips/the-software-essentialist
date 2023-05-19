@@ -6,6 +6,6 @@ export function statsCalculator(seq: number[]) {
   return {
     min: seqCopy[0],
     max: seqCopy[seqCopy.length - 1],
-    elements: 6,
+    elements: seqCopy.length,
   };
 }
