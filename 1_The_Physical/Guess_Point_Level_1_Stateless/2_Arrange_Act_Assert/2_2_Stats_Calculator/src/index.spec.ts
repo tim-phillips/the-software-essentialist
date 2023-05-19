@@ -6,4 +6,10 @@ describe(statsCalculator.name, () => {
     const response = statsCalculator(seq);
     expect(response.min).toBe(-8);
   });
+
+  it("knows that 16 is the minimum value", () => {
+    const seq = [29, 184, 21, 16, 53, 40];
+    const response = statsCalculator(seq);
+    expect(response.min).toBe(16);
+  });
 });
