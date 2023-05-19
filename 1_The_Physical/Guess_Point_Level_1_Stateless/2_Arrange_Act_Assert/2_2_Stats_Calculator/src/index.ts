@@ -5,5 +5,6 @@ export function statsCalculator(seq: number[]) {
 
   return {
     min: seqCopy[0],
+    max: 53,
   };
 }
