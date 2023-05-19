@@ -7,7 +7,7 @@ export function statsCalculator(seq: number[]) {
     min: seqCopy[0],
     max: seqCopy[seqCopy.length - 1],
     elements: seqCopy.length,
-    avg: parseFloat((sum(seqCopy) / seqCopy.length).toFixed(12)),
+    avg: average(seqCopy),
   };
 }
 
@@ -15,4 +15,8 @@ function sum(nums: number[]): number {
   return nums.reduce((sum, num) => {
     return sum + num;
   });
+}
+
+function average(nums: number[]): number {
+  return parseFloat((sum(nums) / nums.length).toFixed(12));
 }
