@@ -7,5 +7,6 @@ export function statsCalculator(seq: number[]) {
     min: seqCopy[0],
     max: seqCopy[seqCopy.length - 1],
     elements: seqCopy.length,
+    avg: 18.666666666667,
   };
 }

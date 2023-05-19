@@ -36,4 +36,10 @@ describe(statsCalculator.name, () => {
     const response = statsCalculator(seq);
     expect(response.elements).toBe(3);
   });
+
+  it("knows that the average is 18.666666666667", () => {
+    const seq = [2, 4, 21, -8, 53, 40];
+    const response = statsCalculator(seq);
+    expect(response.avg).toBe(18.666666666667);
+  });
 });
