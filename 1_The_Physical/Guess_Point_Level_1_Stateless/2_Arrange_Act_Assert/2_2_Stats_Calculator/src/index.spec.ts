@@ -30,4 +30,10 @@ describe(statsCalculator.name, () => {
     const response = statsCalculator(seq);
     expect(response.elements).toBe(6);
   });
+
+  it("knows that there are 3 elements", () => {
+    const seq = [29, 184, 21];
+    const response = statsCalculator(seq);
+    expect(response.elements).toBe(3);
+  });
 });
