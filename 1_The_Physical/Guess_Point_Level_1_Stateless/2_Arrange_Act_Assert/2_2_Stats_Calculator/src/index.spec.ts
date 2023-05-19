@@ -42,4 +42,10 @@ describe(statsCalculator.name, () => {
     const response = statsCalculator(seq);
     expect(response.avg).toBe(18.666666666667);
   });
+
+  it("knows that the average is -44.666666666667", () => {
+    const seq = [29, -184, 21];
+    const response = statsCalculator(seq);
+    expect(response.avg).toBe(-44.666666666667);
+  });
 });
