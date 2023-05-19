@@ -24,4 +24,10 @@ describe(statsCalculator.name, () => {
     const response = statsCalculator(seq);
     expect(response.max).toBe(184);
   });
+
+  it("knows that there are 6 elements", () => {
+    const seq = [29, 184, 21, 16, 53, 40];
+    const response = statsCalculator(seq);
+    expect(response.elements).toBe(6);
+  });
 });
