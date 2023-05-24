@@ -1,51 +1,36 @@
 import { statsCalculator } from "./";
 
 describe(statsCalculator.name, () => {
-  it("knows that -8 is the minimum value", () => {
-    const seq = [2, 4, 21, -8, 53, 40];
+  it.each([
+    [-8, [2, 4, 21, -8, 53, 40]],
+    [16, [29, 184, 21, 16, 53, 40]],
+  ])("knows that %i is the minimum value", (min, seq) => {
     const response = statsCalculator(seq);
-    expect(response.min).toBe(-8);
+    expect(response.min).toBe(min);
   });
 
-  it("knows that 16 is the minimum value", () => {
-    const seq = [29, 184, 21, 16, 53, 40];
+  it.each([
+    [53, [2, 4, 21, -8, 53, 40]],
+    [184, [29, 184, 21, 16, 53, 40]],
+  ])("knows that %i is the maximum value", (max, seq) => {
     const response = statsCalculator(seq);
-    expect(response.min).toBe(16);
+    expect(response.max).toBe(max);
   });
 
-  it("knows that 53 is the maximum value", () => {
-    const seq = [2, 4, 21, -8, 53, 40];
+  it.each([
+    [6, [29, 184, 21, 16, 53, 40]],
+    [3, [29, 184, 21]],
+  ])("knows that there are %i elements", (elements, seq) => {
     const response = statsCalculator(seq);
-    expect(response.max).toBe(53);
+    expect(response.elements).toBe(elements);
   });
 
-  it("knows that 184 is the maximum value", () => {
-    const seq = [29, 184, 21, 16, 53, 40];
-    const response = statsCalculator(seq);
-    expect(response.max).toBe(184);
-  });
-
-  it("knows that there are 6 elements", () => {
-    const seq = [29, 184, 21, 16, 53, 40];
-    const response = statsCalculator(seq);
-    expect(response.elements).toBe(6);
-  });
-
-  it("knows that there are 3 elements", () => {
-    const seq = [29, 184, 21];
-    const response = statsCalculator(seq);
-    expect(response.elements).toBe(3);
-  });
-
-  it("knows that the average is 18.666666666667", () => {
+  it.each([
+    [18.666666666667, [2, 4, 21, -8, 53, 40]],
+    [-44.666666666667, [29, -184, 21]],
+  ])("knows that the average is 18.666666666667", () => {
     const seq = [2, 4, 21, -8, 53, 40];
     const response = statsCalculator(seq);
     expect(response.avg).toBe(18.666666666667);
-  });
-
-  it("knows that the average is -44.666666666667", () => {
-    const seq = [29, -184, 21];
-    const response = statsCalculator(seq);
-    expect(response.avg).toBe(-44.666666666667);
   });
 });
