@@ -9,4 +9,13 @@ describe("military time validator", () => {
 
     expect(res).toBe(true);
   });
+
+  it("knows that an empty string is not a valid range", () => {
+    const range = "";
+    const militaryTimeValidator = new MilitaryTimeValidator();
+
+    const res = militaryTimeValidator.validateRange(range);
+
+    expect(res).toBe(false);
+  });
 });
