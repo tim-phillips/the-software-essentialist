@@ -9,8 +9,7 @@ describe("military time validator", () => {
     "13:34 - 08:45",
     "08:45 - 08:34",
   ])('knows that "%s" is a valid range', (range) => {
-    const res = MilitaryTimeValidator.validateRange(range);
-    expect(res).toBe(true);
+    expect(MilitaryTimeValidator.validateRange(range)).toBe(true);
   });
 
   it.each([
@@ -27,7 +26,6 @@ describe("military time validator", () => {
     "12:34 - 13:60",
     "12:61 - 13:23",
   ])('knows that "%s" is not a valid range', (range) => {
-    const res = MilitaryTimeValidator.validateRange(range);
-    expect(res).toBe(false);
+    expect(MilitaryTimeValidator.validateRange(range)).toBe(false);
   });
 });
