@@ -13,6 +13,12 @@ describe("military time validator", () => {
     expect(res).toBe(true);
   });
 
+  it('knows that "22:00 - 23:12" is a valid range', () => {
+    const range = "22:00 - 23:12";
+    const res = MilitaryTimeValidator.validateRange(range);
+    expect(res).toBe(true);
+  });
+
   it.each([
     "",
     "12:34",
