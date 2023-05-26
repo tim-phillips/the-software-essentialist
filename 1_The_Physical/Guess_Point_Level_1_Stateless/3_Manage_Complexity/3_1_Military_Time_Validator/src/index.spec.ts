@@ -7,7 +7,7 @@ describe("military time validator", () => {
     expect(res).toBe(true);
   });
 
-  it.each(["", "12:34", "12:34 - "])(
+  it.each(["", "12:34", "12:34 - ", " - 01:23"])(
     'knows that "%s" is not a valid range',
     (range) => {
       const res = MilitaryTimeValidator.validateRange(range);
