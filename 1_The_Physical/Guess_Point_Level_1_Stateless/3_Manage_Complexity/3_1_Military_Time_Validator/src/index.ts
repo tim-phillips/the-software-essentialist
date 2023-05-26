@@ -5,7 +5,7 @@ export class MilitaryTimeValidator {
     const [start, end] = range.split(" - ");
     if (!start || !end) return false;
 
-    if (!end.includes(":")) return false;
+    if (!start.includes(":") || !end.includes(":")) return false;
 
     return Boolean(range);
   }
