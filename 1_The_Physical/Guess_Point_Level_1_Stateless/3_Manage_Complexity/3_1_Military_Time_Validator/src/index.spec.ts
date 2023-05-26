@@ -7,21 +7,11 @@ describe("military time validator", () => {
     expect(res).toBe(true);
   });
 
-  it("knows that an empty string is not a valid range", () => {
-    const range = "";
-    const res = MilitaryTimeValidator.validateRange(range);
-    expect(res).toBe(false);
-  });
-
-  it('knows that "12:34" is not a valid range', () => {
-    const range = "12:34";
-    const res = MilitaryTimeValidator.validateRange(range);
-    expect(res).toBe(false);
-  });
-
-  it('knows that "12:34 - " is not a valid range', () => {
-    const range = "12:34 - ";
-    const res = MilitaryTimeValidator.validateRange(range);
-    expect(res).toBe(false);
-  });
+  it.each(["", "12:34", "12:34 - "])(
+    'knows that "%s" is not a valid range',
+    (range) => {
+      const res = MilitaryTimeValidator.validateRange(range);
+      expect(res).toBe(false);
+    }
+  );
 });
