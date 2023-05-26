@@ -18,4 +18,13 @@ describe("military time validator", () => {
 
     expect(res).toBe(false);
   });
+
+  it('knows that "12:34" is not a valid range', () => {
+    const range = "12:34";
+    const militaryTimeValidator = new MilitaryTimeValidator();
+
+    const res = militaryTimeValidator.validateRange(range);
+
+    expect(res).toBe(false);
+  });
 });
