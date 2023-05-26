@@ -24,6 +24,7 @@ describe("military time validator", () => {
     "12:23 - 25:00",
     "12:23 - 24:01",
     "00:00 - 24:00",
+    "12:34 - 13:60",
   ])('knows that "%s" is not a valid range', (range) => {
     const res = MilitaryTimeValidator.validateRange(range);
     expect(res).toBe(false);
