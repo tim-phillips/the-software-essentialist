@@ -1,23 +1,13 @@
 import { MilitaryTimeValidator } from "./";
 
 describe("military time validator", () => {
-  it('knows that "01:12 - 14:32" is a valid range', () => {
-    const range = "01:12 - 14:32";
-    const res = MilitaryTimeValidator.validateRange(range);
-    expect(res).toBe(true);
-  });
-
-  it('knows that "12:34 - 13:45" is a valid range', () => {
-    const range = "12:34 - 13:45";
-    const res = MilitaryTimeValidator.validateRange(range);
-    expect(res).toBe(true);
-  });
-
-  it('knows that "22:00 - 23:12" is a valid range', () => {
-    const range = "22:00 - 23:12";
-    const res = MilitaryTimeValidator.validateRange(range);
-    expect(res).toBe(true);
-  });
+  it.each(["01:12 - 14:32", "12:34 - 13:45", "22:00 - 23:12"])(
+    'knows that "%s" is a valid range',
+    (range) => {
+      const res = MilitaryTimeValidator.validateRange(range);
+      expect(res).toBe(true);
+    }
+  );
 
   it.each([
     "",
