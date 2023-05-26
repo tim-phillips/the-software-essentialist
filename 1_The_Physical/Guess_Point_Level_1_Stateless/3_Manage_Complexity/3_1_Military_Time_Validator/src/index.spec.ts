@@ -1,7 +1,7 @@
 import { MilitaryTimeValidator } from "./";
 
 describe("military time validator", () => {
-  it.each(["01:12 - 14:32", "12:34 - 13:45", "22:00 - 23:12"])(
+  it.each(["01:12 - 14:32", "12:34 - 13:45", "22:00 - 23:12", "00:00 - 23:59"])(
     'knows that "%s" is a valid range',
     (range) => {
       const res = MilitaryTimeValidator.validateRange(range);
