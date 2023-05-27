@@ -2,8 +2,9 @@ export class MilitaryTimeValidator {
   static validateRange(range: string): boolean {
     if (!range.includes("-")) return false;
 
-    const [start, end] = range.split(" - ");
+    const [start, end, ...rest] = range.split(" - ");
     if (!start || !end) return false;
+    if (rest.length) return false;
 
     if (!start.includes(":") || !end.includes(":")) return false;
 
