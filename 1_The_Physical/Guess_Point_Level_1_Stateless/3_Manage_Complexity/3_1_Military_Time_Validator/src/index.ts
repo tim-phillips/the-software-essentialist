@@ -1,20 +1,44 @@
 export class MilitaryTimeValidator {
   static validateRange(range: string): boolean {
-    if (!range.includes("-")) return false;
+    if (!this.rangeHasSeparator(range)) return false;
+    if (!this.rangeHasCorrectNumberOfParts(range)) return false;
 
-    const [start, end, ...rest] = range.split(" - ");
-    if (!start || !end) return false;
-    if (rest.length) return false;
+    const [start, end] = this.getStartAndEndTimes(range);
+    if (!this.isValidTime(start) || !this.isValidTime(end)) return false;
 
-    if (!start.includes(":") || !end.includes(":")) return false;
+    return true;
+  }
 
-    const [startHour, startMinute] = start.split(":");
-    const [endHour, endMinute] = end.split(":");
-    if (parseInt(startHour) >= 24 || parseInt(startHour) < 0) return false;
-    if (parseInt(endHour) >= 24 || parseInt(endHour) < 0) return false;
-    if (parseInt(startMinute) >= 60 || parseInt(startMinute) < 0) return false;
-    if (parseInt(endMinute) >= 60 || parseInt(endMinute) < 0) return false;
+  private static rangeHasSeparator(range: string): boolean {
+    return range.includes("-");
+  }
 
-    return Boolean(range);
+  private static rangeHasCorrectNumberOfParts(range: string): boolean {
+    const parts = range.split(" - ");
+    return parts.length === 2;
+  }
+
+  private static getStartAndEndTimes(range: string): string[] {
+    const [start, end] = range.split(" - ");
+    return [start, end];
+  }
+
+  private static isValidTime(time: string): boolean {
+    if (!this.timeHasSeparator(time)) return false;
+
+    const [hour, minute] = this.getHourAndMinute(time);
+    if (hour >= 24 || hour < 0) return false;
+    if (minute >= 60 || minute < 0) return false;
+
+    return true;
+  }
+
+  private static timeHasSeparator(time: string): boolean {
+    return time.includes(":");
+  }
+
+  private static getHourAndMinute(time: string): number[] {
+    const [hour, minute] = time.split(":").map((t) => parseInt(t));
+    return [hour, minute];
   }
 }
