@@ -9,7 +9,7 @@ export class MilitaryTimeValidator {
 
     const [startHour, startMinute] = start.split(":");
     const [endHour, endMinute] = end.split(":");
-    if (parseInt(startHour) >= 24) return false;
+    if (parseInt(startHour) >= 24 || parseInt(startHour) < 0) return false;
     if (parseInt(endHour) >= 24) return false;
     if (parseInt(startMinute) >= 60) return false;
     if (parseInt(endMinute) >= 60) return false;
