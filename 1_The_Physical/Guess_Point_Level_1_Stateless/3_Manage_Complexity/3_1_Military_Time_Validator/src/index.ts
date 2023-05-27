@@ -1,12 +1,15 @@
 export class MilitaryTimeValidator {
   static validateRange(range: string): boolean {
-    if (!this.rangeHasSeparator(range)) return false;
-    if (!this.rangeHasCorrectNumberOfParts(range)) return false;
+    if (
+      !this.rangeHasSeparator(range) ||
+      !this.rangeHasCorrectNumberOfParts(range)
+    ) {
+      return false;
+    }
 
     const [start, end] = this.getStartAndEndTimes(range);
-    if (!this.isValidTime(start) || !this.isValidTime(end)) return false;
 
-    return true;
+    return this.isValidTime(start) && this.isValidTime(end);
   }
 
   private static rangeHasSeparator(range: string): boolean {
@@ -14,8 +17,7 @@ export class MilitaryTimeValidator {
   }
 
   private static rangeHasCorrectNumberOfParts(range: string): boolean {
-    const parts = range.split(" - ");
-    return parts.length === 2;
+    return range.split(" - ").length === 2;
   }
 
   private static getStartAndEndTimes(range: string): string[] {
@@ -27,10 +29,8 @@ export class MilitaryTimeValidator {
     if (!this.timeHasSeparator(time)) return false;
 
     const [hour, minute] = this.getHourAndMinute(time);
-    if (hour >= 24 || hour < 0) return false;
-    if (minute >= 60 || minute < 0) return false;
 
-    return true;
+    return this.isValidHour(hour) && this.isValidMinute(minute);
   }
 
   private static timeHasSeparator(time: string): boolean {
@@ -40,5 +40,13 @@ export class MilitaryTimeValidator {
   private static getHourAndMinute(time: string): number[] {
     const [hour, minute] = time.split(":").map((t) => parseInt(t));
     return [hour, minute];
+  }
+
+  private static isValidHour(hour: number): boolean {
+    return hour < 24 && hour >= 0;
+  }
+
+  private static isValidMinute(minute: number): boolean {
+    return minute < 60 && minute >= 0;
   }
 }
