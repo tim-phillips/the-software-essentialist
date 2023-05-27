@@ -28,6 +28,7 @@ describe("military time validator", () => {
     "-12:34 - 13:23",
     "12:34 - -13:23",
     "12:-34 - 13:23",
+    "12:34 - 13:-23",
   ])('knows that "%s" is not a valid range', (range) => {
     expect(MilitaryTimeValidator.validateRange(range)).toBe(false);
   });
