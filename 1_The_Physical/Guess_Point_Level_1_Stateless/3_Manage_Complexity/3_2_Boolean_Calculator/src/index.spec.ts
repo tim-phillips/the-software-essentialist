@@ -10,4 +10,14 @@ describe(BooleanCalculator.name, () => {
 
     expect(result).toEqual(expected);
   });
+
+  it("'FALSE' is `false`", () => {
+    const booleanCalculator = new BooleanCalculator();
+    const expression = "FALSE";
+    const expected = false;
+
+    const result = booleanCalculator.evaluateExpression(expression);
+
+    expect(result).toEqual(expected);
+  });
 });
