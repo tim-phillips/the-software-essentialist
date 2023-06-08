@@ -1,5 +1,5 @@
 export class BooleanCalculator {
-  evaluateExpression(expression: string): boolean {
+  static evaluateExpression(expression: string): boolean {
     return expression === "TRUE";
   }
 }
