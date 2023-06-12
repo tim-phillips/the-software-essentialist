@@ -18,6 +18,7 @@ describe(BooleanCalculator.name, () => {
     "TRUE AND FALSE",
     "FALSE OR FALSE",
     "(TRUE OR TRUE OR TRUE) AND FALSE",
+    "NOT (TRUE AND TRUE)",
   ])("'%s' is `false`", (expression) => {
     expect(BooleanCalculator.evaluateExpression(expression)).toEqual(false);
   });
