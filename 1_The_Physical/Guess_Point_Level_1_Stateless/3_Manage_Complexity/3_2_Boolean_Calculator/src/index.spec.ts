@@ -8,7 +8,7 @@ describe(BooleanCalculator.name, () => {
     }
   );
 
-  it.each(["FALSE", "NOT TRUE", "TRUE AND FALSE"])(
+  it.each(["FALSE", "NOT TRUE", "TRUE AND FALSE", "FALSE OR FALSE"])(
     "'%s' is `false`",
     (expression) => {
       expect(BooleanCalculator.evaluateExpression(expression)).toEqual(false);
