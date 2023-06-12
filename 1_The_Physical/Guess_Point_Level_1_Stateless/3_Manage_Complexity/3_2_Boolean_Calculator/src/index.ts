@@ -13,9 +13,8 @@ export class BooleanCalculator {
     const parsed = tokens.map((t) => {
       switch (t) {
         case "TRUE":
-          return true;
         case "FALSE":
-          return false;
+          return t.toLowerCase();
         case "NOT":
           return "!";
         case "AND":
@@ -23,9 +22,8 @@ export class BooleanCalculator {
         case "OR":
           return "||";
         case "(":
-          return "(";
         case ")":
-          return ")";
+          return t;
         default:
           return null;
       }
