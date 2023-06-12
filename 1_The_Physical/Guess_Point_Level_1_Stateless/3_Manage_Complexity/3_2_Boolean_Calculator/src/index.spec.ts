@@ -1,7 +1,7 @@
 import { BooleanCalculator } from "./";
 
 describe(BooleanCalculator.name, () => {
-  it.each(["TRUE", "NOT FALSE", "TRUE AND TRUE"])(
+  it.each(["TRUE", "NOT FALSE", "TRUE AND TRUE", "TRUE OR FALSE"])(
     "'%s' is `true`",
     (expression) => {
       expect(BooleanCalculator.evaluateExpression(expression)).toEqual(true);
