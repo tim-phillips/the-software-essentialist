@@ -36,4 +36,13 @@ describe(BooleanCalculator.name, () => {
 
     expect(result).toEqual(expected);
   });
+
+  it("'TRUE AND FALSE' is `false`", () => {
+    const expression = "TRUE AND FALSE";
+    const expected = false;
+
+    const result = BooleanCalculator.evaluateExpression(expression);
+
+    expect(result).toEqual(expected);
+  });
 });
