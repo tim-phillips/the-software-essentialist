@@ -1,57 +1,17 @@
 import { BooleanCalculator } from "./";
 
 describe(BooleanCalculator.name, () => {
-  it("'TRUE' is `true`", () => {
-    const expression = "TRUE";
-    const expected = true;
+  it.each(["TRUE", "NOT FALSE", "TRUE AND TRUE"])(
+    "'%s' is `true`",
+    (expression) => {
+      expect(BooleanCalculator.evaluateExpression(expression)).toEqual(true);
+    }
+  );
 
-    const result = BooleanCalculator.evaluateExpression(expression);
-
-    expect(result).toEqual(expected);
-  });
-
-  it("'FALSE' is `false`", () => {
-    const expression = "FALSE";
-    const expected = false;
-
-    const result = BooleanCalculator.evaluateExpression(expression);
-
-    expect(result).toEqual(expected);
-  });
-
-  it("'NOT TRUE' is `false`", () => {
-    const expression = "NOT TRUE";
-    const expected = false;
-
-    const result = BooleanCalculator.evaluateExpression(expression);
-
-    expect(result).toEqual(expected);
-  });
-
-  it("'NOT FALSE' is `true`", () => {
-    const expression = "NOT FALSE";
-    const expected = true;
-
-    const result = BooleanCalculator.evaluateExpression(expression);
-
-    expect(result).toEqual(expected);
-  });
-
-  it("'TRUE AND FALSE' is `false`", () => {
-    const expression = "TRUE AND FALSE";
-    const expected = false;
-
-    const result = BooleanCalculator.evaluateExpression(expression);
-
-    expect(result).toEqual(expected);
-  });
-
-  it("'TRUE AND TRUE' is `true`", () => {
-    const expression = "TRUE AND TRUE";
-    const expected = true;
-
-    const result = BooleanCalculator.evaluateExpression(expression);
-
-    expect(result).toEqual(expected);
-  });
+  it.each(["FALSE", "NOT TRUE", "TRUE AND FALSE"])(
+    "'%s' is `false`",
+    (expression) => {
+      expect(BooleanCalculator.evaluateExpression(expression)).toEqual(false);
+    }
+  );
 });
