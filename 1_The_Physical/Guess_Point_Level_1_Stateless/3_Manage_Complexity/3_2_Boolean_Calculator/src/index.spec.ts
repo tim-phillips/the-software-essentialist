@@ -14,4 +14,8 @@ describe(BooleanCalculator.name, () => {
       expect(BooleanCalculator.evaluateExpression(expression)).toEqual(false);
     }
   );
+
+  it.each(["TRUE IS NOT FALSE"])("'%s' throws an error", (expression) => {
+    expect(() => BooleanCalculator.evaluateExpression(expression)).toThrow();
+  });
 });

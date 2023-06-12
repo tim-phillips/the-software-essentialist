@@ -1,6 +1,13 @@
+const operators = ["TRUE", "FALSE", "NOT", "AND"];
+
 export class BooleanCalculator {
   static evaluateExpression(expression: string): boolean {
     const tokens = expression.split(" ");
+
+    if (!tokens.every((t) => operators.includes(t))) {
+      throw new Error(`Only use allowed words: ${operators.join(", ")}`);
+    }
+
     const parsed = tokens.map((t) => {
       switch (t) {
         case "TRUE":
@@ -16,7 +23,6 @@ export class BooleanCalculator {
       }
     });
 
-    const bool = parsed.join(" ");
-    return eval(bool);
+    return eval(parsed.join(""));
   }
 }
