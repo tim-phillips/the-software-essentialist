@@ -27,4 +27,13 @@ describe(BooleanCalculator.name, () => {
 
     expect(result).toEqual(expected);
   });
+
+  it("'NOT FALSE' is `true`", () => {
+    const expression = "NOT FALSE";
+    const expected = true;
+
+    const result = BooleanCalculator.evaluateExpression(expression);
+
+    expect(result).toEqual(expected);
+  });
 });
