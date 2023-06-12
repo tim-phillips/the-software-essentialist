@@ -1,4 +1,4 @@
-const operators = ["TRUE", "FALSE", "NOT", "AND"];
+const operators = ["TRUE", "FALSE", "NOT", "AND", "OR"];
 
 export class BooleanCalculator {
   static evaluateExpression(expression: string): boolean {
@@ -18,6 +18,8 @@ export class BooleanCalculator {
           return "!";
         case "AND":
           return "&&";
+        case "OR":
+          return "||";
         default:
           return null;
       }
