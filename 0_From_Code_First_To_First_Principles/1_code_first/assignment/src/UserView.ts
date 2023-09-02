@@ -6,19 +6,19 @@ type UserData = {
   lastName: string;
 };
 
-type CreateUserSuccess = {
+type UserSuccess = {
   data: UserData;
   error?: undefined;
   success: true;
 };
 
-type CreateUserError = {
+type UserError = {
   data: undefined;
   error: string;
   success: false;
 };
 
-export function generateUserSuccess(user: UserData): CreateUserSuccess {
+export function generateUserSuccess(user: UserData): UserSuccess {
   return {
     data: {
       id: user.id,
@@ -32,7 +32,7 @@ export function generateUserSuccess(user: UserData): CreateUserSuccess {
   };
 }
 
-export function generateUserError(errorName: string): CreateUserError {
+export function generateUserError(errorName: string): UserError {
   return {
     error: errorName,
     data: undefined,
