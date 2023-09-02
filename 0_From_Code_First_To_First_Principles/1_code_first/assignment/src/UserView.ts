@@ -18,7 +18,7 @@ type CreateUserError = {
   success: false;
 };
 
-export function createUserSuccess(user: UserData): CreateUserSuccess {
+export function generateUserSuccess(user: UserData): CreateUserSuccess {
   return {
     data: {
       id: user.id,
@@ -32,7 +32,7 @@ export function createUserSuccess(user: UserData): CreateUserSuccess {
   };
 }
 
-export function createUserError(errorName: string): CreateUserError {
+export function generateUserError(errorName: string): CreateUserError {
   return {
     error: errorName,
     data: undefined,
