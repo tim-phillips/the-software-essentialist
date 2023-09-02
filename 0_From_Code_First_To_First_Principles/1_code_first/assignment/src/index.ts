@@ -1,7 +1,7 @@
 import express from "express";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
-import { createUser, editUser, UserCreateInput } from "./UserModel";
+import { createUser, editUser, getUser, UserCreateInput } from "./UserModel";
 import { generateUserError, generateUserSuccess } from "./UserView";
 
 const PORT = 3030;
@@ -48,12 +48,11 @@ app.post("/users/edit/:userId", async (req, res) => {
   const user = req.body;
 
   try {
-    const newUser = await editUser(parseInt(userId), user);
-    const body = generateUserSuccess(newUser);
+    const updatedUser = await editUser(parseInt(userId), user);
+    const body = generateUserSuccess(updatedUser);
     res.statusCode = 201;
     res.send(body);
   } catch (err) {
-    console.error(err);
     // TODO move to error handler
     let errorName = "UnknownError";
     if (err instanceof PrismaClientKnownRequestError) {
@@ -77,14 +76,35 @@ app.post("/users/edit/:userId", async (req, res) => {
   }
 });
 
-app.get("/users", (req, res) => {
+app.get("/users", async (req, res) => {
+  // TODO validate input
   const { email } = req.query;
-  console.log({ email });
 
-  // TODO lookup email in db
-  // TODO return email
+  if (!email || typeof email !== "string") {
+    res.statusCode = 404;
+    const errorName = "InvalidEmail";
+    const body = generateUserError(errorName);
+    res.send(body);
+    return;
+  }
 
-  res.send("user 3");
+  try {
+    const user = await getUser(email);
+    const body = generateUserSuccess(user);
+    res.statusCode = 201;
+    res.send(body);
+  } catch (err) {
+    // TODO move to error handler
+    let errorName = "UnknownError";
+    if (err instanceof PrismaClientKnownRequestError) {
+      if (err.code === "P2025") {
+        res.statusCode = 404;
+        errorName = "UserNotFound";
+      }
+    }
+    const body = generateUserError(errorName);
+    res.send(body);
+  }
 });
 
 app.listen(PORT, () => {

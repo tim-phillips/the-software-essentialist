@@ -11,3 +11,7 @@ export function createUser(user: UserCreateInput) {
 export function editUser(userId: number, user: Prisma.UserUpdateInput) {
   return prisma.user.update({ where: { id: userId }, data: user });
 }
+
+export function getUser(email: string) {
+  return prisma.user.findUniqueOrThrow({ where: { email } });
+}
